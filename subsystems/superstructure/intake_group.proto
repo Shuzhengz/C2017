@@ -1,0 +1,40 @@
+syntax = "proto2";
+
+option cc_enable_arenas = true;
+
+package c2017.intake_group;
+
+enum GroundGearIntakeGoal {
+  GROUND_GEAR_NONE = 0;
+  GROUND_GEAR_DROP = 1;
+  GROUND_GEAR_RISE = 2;
+  GROUND_GEAR_SCORE = 3;
+  GROUND_GEAR_START_DROPPING_BALLS = 4;
+  GROUND_GEAR_STOP_DROPPING_BALLS = 5;
+}
+
+// Will be overridden by gear intake position to stay in the correct volume.
+enum GroundBallIntakePosition {
+  GROUND_BALL_UP = 0;
+  GROUND_BALL_DOWN = 1;
+}
+
+enum GroundBallIntakeRollers {
+  GROUND_BALL_NONE = 0;
+  GROUND_BALL_IN = 1;
+  GROUND_BALL_OUT = 2;
+  GROUND_BALL_IN_SLOW = 3;
+}
+
+message IntakeGroupGoal {
+  required uint64 timestamp = 1;
+
+  required GroundGearIntakeGoal ground_gear_intake = 2;
+  required GroundBallIntakePosition ground_ball_position = 3;
+  required GroundBallIntakeRollers ground_ball_rollers = 4;
+
+  required bool agitate = 5;
+
+  required bool side_magazine_open = 6;
+  required bool front_magazine_open = 7;
+}

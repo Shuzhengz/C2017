@@ -1,0 +1,49 @@
+syntax = "proto2";
+
+option cc_enable_arenas = true;
+
+package c2017.magazine;
+
+message MagazineStatus {
+  required uint64 timestamp = 1;
+  required bool current_spiked = 2;
+  required bool side_conveyor_running = 4;
+  required bool upper_conveyor_running = 5;
+  required bool lower_conveyor_running = 6;
+}
+
+message MagazineOutput {
+  required uint64 timestamp = 1;
+  required bool side_magazine_extended = 3;
+  required double upper_voltage = 4;
+  required double side_voltage = 5;
+  required double lower_voltage = 6;
+  required bool front_magazine_extended = 7;
+}
+
+enum UpperGoalState {
+  UPPER_IDLE = 0;
+  UPPER_FORWARD = 1;
+  UPPER_BACKWARD = 2;
+}
+
+enum SideGoalState {
+  SIDE_IDLE = 0;
+  SIDE_PULL_IN = 1;
+  SIDE_AGITATE = 2;
+}
+
+enum LowerGoalState {
+  LOWER_IDLE = 0;
+  LOWER_FORWARD = 1;
+  LOWER_BACKWARD = 2;
+}
+
+message MagazineGoal {
+  required uint64 timestamp = 1;
+  required UpperGoalState upper_goal = 2;
+  required bool side_magazine_extended = 3;
+  required SideGoalState side_goal = 4;
+  required LowerGoalState lower_goal = 5;
+  required bool front_magazine_extended = 6;
+}

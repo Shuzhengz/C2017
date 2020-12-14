@@ -1,0 +1,20 @@
+// RED HELLA
+GroundGearIntaking: true
+SpinupShooter
+SetMagazine: true, true
+
+LiteralDrive: 2.1, 0.0, false, false, 3.0, 3.5, 0.5, 0.5, false
+LiteralDrive: 0.0, -1.57, false, true, 1.5, 2.5, 4.5, 5.5, false
+COMPLETE:
+  Wait: 0.5
+  TeleopDrive: 0.75, 0.0, false
+
+Wait: 2.0
+
+LiteralDrive: -0.3, -0.7, false, false, 3.0, 3.5, 4.5, 5.5, false
+LiteralDrive: 0.1, -0.65, false, false, 3.0, 3.5, 4.5, 5.5, false
+VisionAlign: true, 0.0
+
+StartShoot
+Wait: 3.0
+FluctuateFuel: 1.4, 15.0
